@@ -182,5 +182,10 @@ namespace QLDSV_TC
                 maKhoa = ((DataRowView)bdsLop[0])["MAKHOA"].ToString();
             }catch(Exception ex) { }
         }
+
+        private void txtMaLop_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

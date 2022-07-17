@@ -421,6 +421,7 @@ namespace QLDSV_TC
             this.txtMaLop.Name = "txtMaLop";
             this.txtMaLop.Size = new System.Drawing.Size(186, 21);
             this.txtMaLop.TabIndex = 1;
+            this.txtMaLop.TextChanged += new System.EventHandler(this.txtMaLop_TextChanged);
             // 
             // bdsSV
             // 

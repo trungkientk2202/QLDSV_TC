@@ -87,12 +87,9 @@ namespace QLDSV_TC
                 Program.myReader = Program.ExecSqlDataReader(strlenh);
                 if(Program.myReader == null)
                 {
+                    MessageBox.Show("Lỗi đăng nhập!", "", MessageBoxButtons.OK);
                     return;
                 }
-
-
-
-
 
             };
             if (Program.myReader.FieldCount == 0)
