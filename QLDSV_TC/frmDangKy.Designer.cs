@@ -104,6 +104,7 @@ namespace QLDSV_TC
             // 
             // cmbRole
             // 
+            this.cmbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRole.FormattingEnabled = true;
             this.cmbRole.Location = new System.Drawing.Point(359, 272);
             this.cmbRole.Name = "cmbRole";

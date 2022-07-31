@@ -74,6 +74,9 @@ namespace QLDSV_TC
 
         private void btnPreview_Click(object sender, EventArgs e)
         {
+            if (cmbMonHoc.SelectedValue.ToString() == "System.Data.DataRowView") return;
+
+            if (cmbNienKhoa.SelectedValue.ToString() == "System.Data.DataRowView") return;
             try
             {
                 maMH = cmbMonHoc.SelectedValue.ToString();
@@ -103,6 +106,9 @@ namespace QLDSV_TC
 
         private void cmbMonHoc_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            if (cmbMonHoc.SelectedValue.ToString() == "System.Data.DataRowView") return;
+
             try
             {
                 
@@ -116,6 +122,8 @@ namespace QLDSV_TC
 
         private void cmbNienKhoa_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            if (cmbNienKhoa.SelectedValue.ToString() == "System.Data.DataRowView") return;
             try
             {
                 

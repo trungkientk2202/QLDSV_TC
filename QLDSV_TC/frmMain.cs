@@ -67,7 +67,7 @@ namespace QLDSV_TC
             MANV.Text = "Mã NV: " + Program.username;
             HOTEN.Text = "Họ tên: " + Program.mHoTen;
             NHOM.Text = "Nhóm: " + Program.mGroup;
-            btnDangKy.Enabled=QuanLy.Visible = TuyChon.Visible = BaoCao.Visible = true;
+            btnDangKy.Enabled=QuanLy.Visible =TuyChon.Visible= NhapDiem.Enabled = BaoCao.Visible = true;
             DangKyLTC.Enabled = DongHocPhi.Enabled = false;
             //Phân quyền
         }

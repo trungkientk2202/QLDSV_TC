@@ -19,20 +19,37 @@ namespace QLDSV_TC
 
         private void frmNhapDiem_Load(object sender, EventArgs e)
         {
+            qLDSV_TCDataSet.EnforceConstraints = false;
+            // TODO: This line of code loads data into the 'qLDSV_TCDataSet.MAMH' table. You can move, or remove it, as needed.
+            this.mAMHTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.mAMHTableAdapter.Fill(this.qLDSV_TCDataSet.MAMH);
+            // TODO: This line of code loads data into the 'qLDSV_TCDataSet.NIENKHOA' table. You can move, or remove it, as needed.
+            this.nIENKHOATableAdapter.Connection.ConnectionString = Program.connstr;
+            this.nIENKHOATableAdapter.Fill(this.qLDSV_TCDataSet.NIENKHOA);
+
             cmbKhoa.DataSource = Program.bds_dspm; //sao chep bds_pm o form dang nhap
             cmbKhoa.DisplayMember = "TENKHOA";
             cmbKhoa.ValueMember = "TENSERVER";
             cmbKhoa.SelectedIndex = Program.mKhoa;
-           
+            cmbHocki.SelectedIndex = 0;
+            cmbNhom.SelectedIndex = 0;
+            if (Program.mGroup == "PGV")
+            {
+                cmbKhoa.Enabled = true;
+            }
+            else
+            {
+                cmbKhoa.Enabled = false;
+            }
         }
 
         private void btnBatDau_Click(object sender, EventArgs e)
         {
-            String nienKhoa = txtNienKhoa.Text;
-            String hocKi = txtHocKi.Text;
-            String monHoc = txtMonHoc.Text;
-            String nhom = txtNhom.Text;
-            String strlenh = "exec dbo.SP_DanhSachSinhVienDangKiLopTinChi '"+ nienKhoa+"',"+ hocKi+",'"+monHoc+"'," +nhom;
+            String nienKhoa = cmbNienKhoa.SelectedValue.ToString();
+            String hocKi = cmbHocki.Text;
+            String monHoc = cmbMaMH.SelectedValue.ToString();
+            String nhom = cmbNhom.Text;
+            String strlenh = "exec dbo.SP_DanhSachSinhVienDangKiLopTinChi '" + nienKhoa + "'," + hocKi + ",'" + monHoc + "'," + nhom;
             DataTable dt = Program.ExecSqlDataTable(strlenh);
             if (Program.myReader == null)
             {
@@ -73,7 +90,7 @@ namespace QLDSV_TC
                     + float.Parse(dgvDiem.Rows[i].Cells[3].Value.ToString()) * 0.3 + float.Parse(dgvDiem.Rows[i].Cells[4].Value.ToString()) * 0.6).ToString();
                 }
                 catch (Exception ex) { }
-                
+
             }
         }
 
@@ -85,12 +102,61 @@ namespace QLDSV_TC
 
                 strlenh += " insert into @testGhiDiem(MASV, DIEM_CC, DIEM_GK, DIEM_CK) values('" + dgvDiem.Rows[i].Cells[0].Value + "', " + (float.Parse(dgvDiem.Rows[i].Cells[2].Value.ToString())) + ", " + (float.Parse(dgvDiem.Rows[i].Cells[3].Value.ToString()))
                     + ", " + (float.Parse(dgvDiem.Rows[i].Cells[4].Value.ToString())) + ")";
-                
-                
+
+
             }
             strlenh += " exec[dbo].[SP_GHI_DIEM] " + int.Parse(dgvDiem.Rows[0].Cells[6].Value.ToString()) + ",@testGhiDiem";
             Program.ExecSqlNonQuery(strlenh);
             MessageBox.Show("Nhập điểm thành công", "", MessageBoxButtons.OK);
+
+        }
+
+        private void dgvDiem_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                for (int i = 0; i < dgvDiem.Rows.Count - 1; i++)
+                {
+                    if (!(dgvDiem.Rows[i].Cells[2].Value.ToString() is null || dgvDiem.Rows[i].Cells[3].Value.ToString() is null || dgvDiem.Rows[i].Cells[4].Value.ToString() is null))
+                    {
+                        dgvDiem.Rows[i].Cells[5].Value = (float.Parse(dgvDiem.Rows[i].Cells[2].Value.ToString()) * 0.1
+                        + float.Parse(dgvDiem.Rows[i].Cells[3].Value.ToString()) * 0.3 + float.Parse(dgvDiem.Rows[i].Cells[4].Value.ToString()) * 0.6).ToString();
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void dgvDiem_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvDiem_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter|| e.KeyCode == Keys.Tab)
+            {
+                try
+                {
+                    for (int i = 0; i < dgvDiem.Rows.Count - 1; i++)
+                    {
+                        if (!(dgvDiem.Rows[i].Cells[2].Value.ToString() is null || dgvDiem.Rows[i].Cells[3].Value.ToString() is null || dgvDiem.Rows[i].Cells[4].Value.ToString() is null))
+                        {
+                            dgvDiem.Rows[i].Cells[5].Value = (float.Parse(dgvDiem.Rows[i].Cells[2].Value.ToString()) * 0.1
+                            + float.Parse(dgvDiem.Rows[i].Cells[3].Value.ToString()) * 0.3 + float.Parse(dgvDiem.Rows[i].Cells[4].Value.ToString()) * 0.6).ToString();
+                        }
+
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
         }
     }
 }

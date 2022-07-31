@@ -208,3 +208,4 @@ D:\HK\4-1\CSDLPT\project\CSDLPT\QLDSV_TC\obj\Debug\QLDSV_TC.frptDanhSachLTC.reso
 D:\HK\4-1\CSDLPT\project\CSDLPT\QLDSV_TC\obj\Debug\QLDSV_TC.XrptDanhSachLTC.resources
 D:\HK\4-1\CSDLPT\project\CSDLPT\QLDSV_TC\obj\Debug\QLDSV_TC.frptBangDiemMonHoc.resources
 D:\HK\4-1\CSDLPT\project\CSDLPT\QLDSV_TC\obj\Debug\QLDSV_TC.XrptBANG_DIEM_MON_HOC.resources
+D:\HK\4-1\CSDLPT\project\CSDLPT\QLDSV_TC\obj\Debug\QLDSV_TC.XrptBangDiemTongKet.resources
