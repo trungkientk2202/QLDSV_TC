@@ -395,3 +395,4 @@ G:\Personal-project\QLDSV_TC\QLDSV_TC\bin\Debug\de\DevExpress.Diagram.v22.1.Core
 G:\Personal-project\QLDSV_TC\QLDSV_TC\bin\Debug\es\DevExpress.Diagram.v22.1.Core.resources.dll
 G:\Personal-project\QLDSV_TC\QLDSV_TC\bin\Debug\ja\DevExpress.Diagram.v22.1.Core.resources.dll
 G:\Personal-project\QLDSV_TC\QLDSV_TC\obj\Debug\QLDSV_TC.XrptDANH_SACH_SINH_VIEN_DANG_KI_LTC.resources
+G:\Personal-project\QLDSV_TC\QLDSV_TC\obj\Debug\QLDSV_TC.frptDanhSachSinhVienDangKyLTC.resources
