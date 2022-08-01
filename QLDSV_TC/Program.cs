@@ -17,9 +17,9 @@ namespace QLDSV_TC
         /// </summary>
         public static SqlConnection conn = new SqlConnection();
         public static String connstr;
-        public static String connstr_publisher = "Data Source=TRUNGKIEN;Initial Catalog=QLDSV_TC;User ID=sa;password=123";
+        public static String connstr_publisher = "Data Source=165067-NTDuy;Initial Catalog=QLDSV_TC;User ID=sa;password=12";
         public static SqlDataReader myReader;
-        public static String servername = "TRUNGKIEN";
+        public static String servername = "165067-NTDuy";
         public static String username = "";
         public static String mlogin = "";
         public static String password = "";

@@ -64,11 +64,11 @@ namespace QLDSV_TC
             cmbKhoa.SelectedIndex = 0;
         }
 
-        
+
 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
-            if(txtLogin.Text.Trim()==""||txtPass.Text.Trim() == "")
+            if (txtLogin.Text.Trim() == "" || txtPass.Text.Trim() == "")
             {
                 MessageBox.Show("Login name và mật khẩu không được để trống", "", MessageBoxButtons.OK);
                 return;
@@ -80,12 +80,18 @@ namespace QLDSV_TC
             Program.mKhoa = cmbKhoa.SelectedIndex;
             Program.mloginDN = Program.mlogin;
             Program.passwordDN = Program.password;
-            String strlenh = "EXEC [dbo].[SP_Lay_Thong_Tin_GV_Tu_Login] '" + Program.mlogin + "'";
-            Program.myReader = Program.ExecSqlDataReader(strlenh);
-            if (Program.myReader == null) {
-                strlenh = "EXEC [dbo].[SP_LOGIN] '" + Program.mlogin + "'," +"'"+ Program.password+"'";
+            String strlenh;
+            if (!txtLogin.Text.Equals("N18DCCN032"))
+            {
+                strlenh = "EXEC [dbo].[SP_Lay_Thong_Tin_GV_Tu_Login] '" + Program.mlogin + "'";
                 Program.myReader = Program.ExecSqlDataReader(strlenh);
-                if(Program.myReader == null)
+
+            }
+            if (Program.myReader == null)
+            {
+                strlenh = "EXEC [dbo].[SP_LOGIN] '" + Program.mlogin + "'," + "'" + Program.password + "'";
+                Program.myReader = Program.ExecSqlDataReader(strlenh);
+                if (Program.myReader == null)
                 {
                     MessageBox.Show("Lỗi đăng nhập!", "", MessageBoxButtons.OK);
                     return;
@@ -97,16 +103,19 @@ namespace QLDSV_TC
                 MessageBox.Show("Lỗi đăng nhập", "", MessageBoxButtons.OK);
                 return;
             }
-            Program.myReader.Read(); //data nhiều dòng thì dùng vòng lặp
-            Program.username = Program.myReader.GetString(0);//lay user name
-            
+            while (Program.myReader.Read()) //data nhiều dòng thì dùng vòng lặp
+            {
+                Program.username = Program.myReader.GetString(0);//lay user name
+                Program.mHoTen = Program.myReader.GetString(1);
+                Program.mGroup = Program.myReader.GetString(2);
+
+            }
+
             if (Convert.IsDBNull(Program.username))
             {
                 MessageBox.Show("Login bạn nhập không có quyền truy cập dữ liệu\n Bạn xem lại username và password", "", MessageBoxButtons.OK);
                 return;
             }
-            Program.mHoTen = Program.myReader.GetString(1);
-            Program.mGroup = Program.myReader.GetString(2);
             Program.myReader.Close();
             Program.conn.Close();
             Program.frmChinh.MANV.Text = "Mã SV: " + Program.username;
@@ -117,7 +126,7 @@ namespace QLDSV_TC
             this.Close();
         }
 
-        
+
         private void btnThoat_Click(object sender, EventArgs e)
         {
             Close();
