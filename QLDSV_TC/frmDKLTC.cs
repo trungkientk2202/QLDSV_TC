@@ -23,13 +23,19 @@ namespace QLDSV_TC
         private void frmDKLTC_Load(object sender, EventArgs e)
         {
 
+            qLDSV_TCDataSet.EnforceConstraints = false;
+            this.nIENKHOATableAdapter.Connection.ConnectionString = Program.connstr;
+            this.nIENKHOATableAdapter.Fill(this.qLDSV_TCDataSet.NIENKHOA);
+            cmbHocki.SelectedIndex = 0;
+
         }
 
         private void btnTimLTC_Click(object sender, EventArgs e)
         {
-            String nienKhoa = txtNienKhoa.Text;
-            String hocKi = txtHocKi.Text;
+            String nienKhoa = cmbNienKhoa.SelectedValue.ToString();
+            String hocKi = cmbHocki.Text;
             String strlenh = "exec [dbo].[GET_LOP_TIN_CHI_BY_NIEN_KHOA_AND_HOC_KY] '" + nienKhoa + "',"+hocKi+",'"+Program.username+"'" ;
+            MessageBox.Show(strlenh);
             DataTable dt = Program.ExecSqlDataTable(strlenh);
             if (Program.myReader == null)
             {
