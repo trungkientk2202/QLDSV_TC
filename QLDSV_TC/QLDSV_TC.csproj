@@ -148,6 +148,12 @@
     <Compile Include="frptBangDiemMonHoc.Designer.cs">
       <DependentUpon>frptBangDiemMonHoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="frptDanhSachDongHocPhiLop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frptDanhSachDongHocPhiLop.Designer.cs">
+      <DependentUpon>frptDanhSachDongHocPhiLop.cs</DependentUpon>
+    </Compile>
     <Compile Include="frptDanhSachLTC.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +184,12 @@
     </Compile>
     <Compile Include="XrptDanhSachLTC.Designer.cs">
       <DependentUpon>XrptDanhSachLTC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XrptDANH_SACH_DONG_HOC_PHI_LOP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XrptDANH_SACH_DONG_HOC_PHI_LOP.Designer.cs">
+      <DependentUpon>XrptDANH_SACH_DONG_HOC_PHI_LOP.cs</DependentUpon>
     </Compile>
     <Compile Include="XrptDANH_SACH_SINH_VIEN_DANG_KI_LTC.cs">
       <SubType>Component</SubType>
@@ -215,6 +227,9 @@
     <EmbeddedResource Include="frptBangDiemMonHoc.resx">
       <DependentUpon>frptBangDiemMonHoc.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frptDanhSachDongHocPhiLop.resx">
+      <DependentUpon>frptDanhSachDongHocPhiLop.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frptDanhSachLTC.resx">
       <DependentUpon>frptDanhSachLTC.cs</DependentUpon>
     </EmbeddedResource>
@@ -236,6 +251,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="XrptDanhSachLTC.resx">
       <DependentUpon>XrptDanhSachLTC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XrptDANH_SACH_DONG_HOC_PHI_LOP.resx">
+      <DependentUpon>XrptDANH_SACH_DONG_HOC_PHI_LOP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="XrptDANH_SACH_SINH_VIEN_DANG_KI_LTC.resx">
       <DependentUpon>XrptDANH_SACH_SINH_VIEN_DANG_KI_LTC.cs</DependentUpon>

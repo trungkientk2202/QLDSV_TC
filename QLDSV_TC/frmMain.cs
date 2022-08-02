@@ -249,5 +249,18 @@ namespace QLDSV_TC
                 f.Show();
             }
         }
+
+        private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            closeDiffrentForm(typeof(frptDanhSachDongHocPhiLop));
+            Form frm = this.CheckExists(typeof(frptDanhSachDongHocPhiLop));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frptDanhSachDongHocPhiLop f = new frptDanhSachDongHocPhiLop();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
     }
 }
