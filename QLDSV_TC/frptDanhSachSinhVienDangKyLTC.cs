@@ -27,6 +27,10 @@ namespace QLDSV_TC
             // TODO: This line of code loads data into the 'qLDSV_TCDataSet.MAMH' table. You can move, or remove it, as needed.
             this.mAMHTableAdapter.Connection.ConnectionString = Program.connstr;
             this.mAMHTableAdapter.Fill(this.qLDSV_TCDataSet.MAMH);
+            this.nIENKHOATableAdapter.Connection.ConnectionString = Program.connstr;
+            this.nIENKHOATableAdapter.Fill(this.qLDSV_TCDataSet.NIENKHOA);
+            this.cmbHocKy.SelectedIndex = 0;
+            this.NhomCB.SelectedIndex = 0;
             cmbKhoa.DataSource = Program.bds_dspm; //sao chep bds_pm o form dang nhap
             cmbKhoa.DisplayMember = "TENKHOA";
             cmbKhoa.ValueMember = "TENSERVER";
@@ -69,14 +73,16 @@ namespace QLDSV_TC
         {
             try
             {
-                string nienKhoa = this.nienKhoa;
+                string nienKhoa = cmbNienKhoa.SelectedValue.ToString();
+
                 int hocKy = Convert.ToInt32(cmbHocKy.SelectedItem.ToString());
-                string maMonHoc = this.maMonHoc;
+                string maMonHoc = cmbMaMH.SelectedValue.ToString();
                 int nhom = Convert.ToInt32(NhomCB.SelectedItem.ToString());
                 XrptDANH_SACH_SINH_VIEN_DANG_KI_LTC rpt = new XrptDANH_SACH_SINH_VIEN_DANG_KI_LTC(nienKhoa, hocKy, maMonHoc, nhom);
                 //XrptDANH_SACH_SINH_VIEN_DANG_KI_LTC rpt = new XrptDANH_SACH_SINH_VIEN_DANG_KI_LTC("2021-2022", 1, "LTW", 1);
 
-                rpt.labelTieuDe.Text = "Test";
+                rpt.labelTieuDe.Text = "Danh sách sinh viên đăng kí lớp tín chỉ \nKhoa "+ cmbKhoa.Text + "\nNiên khóa " + nienKhoa+" Học kì " +
+                   hocKy+"\nMôn học "+ cmbMaMH.Text +" - Nhóm" + NhomCB.Text;
                 //rpt.lblHoTen.Text = cmbHoten.Text;
 
                 ReportPrintTool print = new ReportPrintTool(rpt);

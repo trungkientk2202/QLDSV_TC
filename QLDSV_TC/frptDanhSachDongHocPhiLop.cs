@@ -55,6 +55,9 @@ namespace QLDSV_TC
             // TODO: This line of code loads data into the 'qLDSV_TCDataSet.MAMH' table. You can move, or remove it, as needed.
             this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
             this.lOPTableAdapter.Fill(this.qLDSV_TCDataSet.LOP);
+            this.nIENKHOATableAdapter.Connection.ConnectionString = Program.connstr;
+            this.nIENKHOATableAdapter.Fill(this.qLDSV_TCDataSet.NIENKHOA);
+            cmbHocKy.SelectedIndex = 1;
             cmbKhoa.DataSource = Program.bds_dspm; //sao chep bds_pm o form dang nhap
             cmbKhoa.DisplayMember = "TENKHOA";
             cmbKhoa.ValueMember = "TENSERVER";
@@ -104,13 +107,16 @@ namespace QLDSV_TC
         {
             try
             {
-                string nienKhoa = this.nienKhoa;
+                string nienKhoa = cmbNienKhoa.SelectedValue.ToString();
                 int hocKy = Convert.ToInt32(cmbHocKy.SelectedItem.ToString());
-                string maLop = this.maLop;
+                string maLop = tENLOPComboBox.SelectedValue.ToString();
                 XrptDANH_SACH_DONG_HOC_PHI_LOP rpt = new XrptDANH_SACH_DONG_HOC_PHI_LOP(maLop,nienKhoa, hocKy);
                 //XrptDANH_SACH_SINH_VIEN_DANG_KI_LTC rpt = new XrptDANH_SACH_SINH_VIEN_DANG_KI_LTC("2021-2022", 1, "LTW", 1);
 
-                //rpt.labelTieuDe.Text = "Test";
+                rpt.labelTitle.Text = "Test";
+                rpt.labelTitle.Text = "Danh sách sinh viên đóng học phí";
+                rpt.labelKhoa.Text = "Khoa "+ cmbKhoa.Text;
+                rpt.labelMaLop.Text = "Mã lớp: " + maLop;
                 //rpt.lblHoTen.Text = cmbHoten.Text;
 
                 ReportPrintTool print = new ReportPrintTool(rpt);
