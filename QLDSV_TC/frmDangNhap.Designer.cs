@@ -85,6 +85,7 @@ namespace QLDSV_TC
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(214, 20);
             this.txtLogin.TabIndex = 4;
+            this.txtLogin.Text = "N18DCCN032";
             // 
             // txtPass
             // 
@@ -93,6 +94,7 @@ namespace QLDSV_TC
             this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(214, 20);
             this.txtPass.TabIndex = 5;
+            this.txtPass.Text = "123456";
             this.txtPass.TextChanged += new System.EventHandler(this.txtPass_TextChanged);
             // 
             // btnDangNhap

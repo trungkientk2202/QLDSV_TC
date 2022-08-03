@@ -47,27 +47,27 @@ namespace QLDSV_TC
 
         private void btnDKLTC_Click(object sender, EventArgs e)
         {
-            String strlenh = "Declare @dk as DanhSachDangKi ";
-            String strlenh1 = "Declare @dk as DanhSachDangKi ";
+            String strlenh = "Declare @dk as DanhSachDangKiNew ";
+            //String strlenh1 = "Declare @dk as DanhSachDangKi ";
             for (int i = 0; i < dgvDKLTC.Rows.Count-1;i++)
             {
 
                 String maLTC =dgvDKLTC.Rows[i].Cells[0].Value.ToString();
                 if (dgvDKLTC.Rows[i].Cells[6].Value.ToString().Equals("False"))
                 {
-                    strlenh+="insert into @dk(MALTC, MASV) values(" + maLTC + ", '" + Program.username + "')";
+                    strlenh+="insert into @dk(MALTC, MASV, LOAI) values(" + maLTC + ", '" + Program.username + "',0)";//Huy
                     
                 }
                 else
                 {
-                    strlenh1 += "insert into @dk(MALTC, MASV) values(" + maLTC + ", '" + Program.username + "')";
+                    strlenh += "insert into @dk(MALTC, MASV, LOAI) values(" + maLTC + ", '" + Program.username + "',1)";//Dang ky
                 }
                 
             }
-            strlenh += "exec HUY_DANG_KI_LTC @DS = @dk";
-            strlenh1 += "exec DANG_KI_LTC @DS = @dk";
+            //strlenh += "exec HUY_DANG_KI_LTC @DS = @dk";
+            strlenh += "exec DANG_KI_LTC @DS = @dk";
             Program.ExecSqlNonQuery(strlenh);
-            Program.ExecSqlNonQuery(strlenh1);
+            //Program.ExecSqlNonQuery(strlenh1);
             MessageBox.Show("Đăng kí thành công", "", MessageBoxButtons.OK);
             
             return;
