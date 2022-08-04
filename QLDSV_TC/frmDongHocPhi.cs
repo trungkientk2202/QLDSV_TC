@@ -136,22 +136,29 @@ namespace QLDSV_TC
 
         private void btnThemChiTietHocPhi_Click(object sender, EventArgs e)
         {
-            if (currentDataRowView == null) return;
-
-            long longSum = Convert.ToInt64(txtChiTietTienHocPhi.Text);
-            if (longSum > Convert.ToInt64(currentDataRowView["CONLAI"]))
+            try
             {
-                MessageBox.Show("Vui lòng nhập số tiền nhỏ hơn số tiền còn lại", "", MessageBoxButtons.OK);
-                return;
+                if (currentDataRowView == null) return;
+
+                long longSum = Convert.ToInt64(txtChiTietTienHocPhi.Text);
+                if (longSum > Convert.ToInt64(currentDataRowView["CONLAI"]))
+                {
+                    MessageBox.Show("Vui lòng nhập số tiền nhỏ hơn số tiền còn lại", "Thông báo ", MessageBoxButtons.OK);
+                    return;
+                }
+
+                string strlenh = " exec [dbo].[SP_ThemCTHocPHi] '" + currentDataRowView["MASV"].ToString() + "','" + currentDataRowView["NIENKHOA"].ToString() + "'," + Convert.ToString(currentDataRowView["HOCKY"]) + "," + txtChiTietTienHocPhi.Text;
+                if (Program.ExecSqlNonQuery(strlenh) == 0)
+                {
+
+                    MessageBox.Show("Nhập học phí thành công", "", MessageBoxButtons.OK);
+                    gridHocPhi_DoubleClick(null, null);
+                    button1_Click(null, null);
+                }
             }
-
-            string strlenh = " exec [dbo].[SP_ThemCTHocPHi] '" + currentDataRowView["MASV"].ToString() + "','" + currentDataRowView["NIENKHOA"].ToString() + "'," + Convert.ToString(currentDataRowView["HOCKY"]) + "," + txtChiTietTienHocPhi.Text;
-            if (Program.ExecSqlNonQuery(strlenh) == 0)
+            catch (Exception objex)
             {
-
-                MessageBox.Show("Nhập học phí thành công", "", MessageBoxButtons.OK);
-                gridHocPhi_DoubleClick(null, null);
-                button1_Click(null, null);
+                MessageBox.Show(objex.ToString(),"Thông báo ",MessageBoxButtons.OK);
             }
 
         }
