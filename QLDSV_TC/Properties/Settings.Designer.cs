@@ -26,10 +26,21 @@ namespace QLDSV_TC.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=TRUNGKIEN\\SERVER1;Initial Catalog=QLDSV_TC;User ID=sa")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=TRUNGKIEN\\SERVER1;Initial Catalog=QLDSV_TC;User ID=sa;password=123")]
         public string QLDSV_TCConnectionString {
             get {
                 return ((string)(this["QLDSV_TCConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=165062-PVMINH;Initial Catalog=QLDSV_TC;Persist Security Info=True;Use" +
+            "r ID=sa;Password=12345")]
+        public string QLDSV_TCConnectionStringGoc {
+            get {
+                return ((string)(this["QLDSV_TCConnectionStringGoc"]));
             }
         }
     }
