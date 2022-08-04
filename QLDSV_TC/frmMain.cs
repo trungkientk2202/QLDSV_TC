@@ -54,6 +54,16 @@ namespace QLDSV_TC
         {
             btnDangXuat.Enabled = true;
             btnDangNhap.Enabled = false;
+            if (Program.mGroup == "PKT")
+            {
+                MANV.Text = "Mã NV: " + Program.username;
+                HOTEN.Text = "Họ tên: " + Program.username;
+                NHOM.Text = "Phòng: " + Program.mGroup;
+                btnDangKy.Enabled = false;
+                QuanLy.Visible = MoLTC.Enabled = NhapDiem.Enabled = BaoCao.Visible = DangKyLTC.Enabled = DongHocPhi.Enabled = false;
+                DongHocPhi.Enabled = TuyChon.Visible = true;
+                return;
+            }
             if (Program.mGroup != "PGV"&& Program.mGroup != "KHOA")
             {
                 MANV.Text = "Mã SV: " + Program.username;
@@ -64,6 +74,7 @@ namespace QLDSV_TC
                 TuyChon.Visible= DangKyLTC.Enabled = DongHocPhi.Enabled= true;
                 return;
             }
+            
             MANV.Text = "Mã NV: " + Program.username;
             HOTEN.Text = "Họ tên: " + Program.mHoTen;
             NHOM.Text = "Nhóm: " + Program.mGroup;
@@ -234,7 +245,15 @@ namespace QLDSV_TC
 
         private void DongHocPhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            closeDiffrentForm(typeof(frmDongHocPhi));
+            Form frm = this.CheckExists(typeof(frmDongHocPhi));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmDongHocPhi f = new frmDongHocPhi();
+                f.MdiParent = this;
+                f.Show();
+            }
         }
 
         private void btnPrintStudent_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

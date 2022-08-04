@@ -60,7 +60,6 @@ namespace QLDSV_TC
         {
             if (KetNoi_CSDLGOC() == 0) return;
             LayDSPM("Select * FROM  [dbo].[Get_Subscribes]");
-            cmbKhoa.SelectedIndex = 1;
             cmbKhoa.SelectedIndex = 0;
         }
 
@@ -90,7 +89,14 @@ namespace QLDSV_TC
                 Program.myReader = Program.ExecSqlDataReader(strlenh);
                 if (Program.myReader == null)
                 {
-                    MessageBox.Show("Lỗi đăng nhập!", "", MessageBoxButtons.OK);
+                    Program.username = Program.mlogin;
+                    Program.mGroup = "PKT";
+                    Program.conn.Close();
+                    Program.frmChinh.MANV.Text = "Mã NV: " + Program.username;
+                    Program.frmChinh.HOTEN.Text = "Họ tên: " + Program.username;
+                    Program.frmChinh.NHOM.Text = "Phòng: " + "PKT";
+                    Program.frmChinh.HienThiMenu();
+                    this.Close();
                     return;
                 }
 
@@ -140,7 +146,14 @@ namespace QLDSV_TC
                     Program.myReader = Program.ExecSqlDataReader(strlenh);
                     if (Program.myReader == null)
                     {
-                        MessageBox.Show("Lỗi đăng nhập!", "", MessageBoxButtons.OK);
+                        Program.username = Program.mlogin;
+                        Program.mGroup = "PKT";
+                        Program.conn.Close();
+                        Program.frmChinh.MANV.Text = "Mã NV: " + Program.username;
+                        Program.frmChinh.HOTEN.Text = "Họ tên: " + Program.username;
+                        Program.frmChinh.NHOM.Text = "Phòng: " + "PKT";
+                        Program.frmChinh.HienThiMenu();
+                        this.Close();
                         return;
                     }
 
