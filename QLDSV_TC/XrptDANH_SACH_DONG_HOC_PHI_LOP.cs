@@ -16,7 +16,7 @@ namespace QLDSV_TC
         public XrptDANH_SACH_DONG_HOC_PHI_LOP(string maLop,string nienKhoa, int hocKy)
         {
             InitializeComponent();
-            this.sqlDataSource1.Connection.ConnectionString = Program.connstr_site3;
+            this.sqlDataSource1.Connection.ConnectionString = Program.connstr;
             this.sqlDataSource1.Queries[0].Parameters[0].Value = maLop;
             this.sqlDataSource1.Queries[0].Parameters[1].Value = nienKhoa;
             this.sqlDataSource1.Queries[0].Parameters[2].Value = hocKy;
