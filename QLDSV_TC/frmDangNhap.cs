@@ -158,7 +158,7 @@ namespace QLDSV_TC
                     }
 
                 };
-                if (Program.myReader.FieldCount == 0)
+                if (!Program.myReader.HasRows)
                 {
                     MessageBox.Show("Lỗi đăng nhập", "", MessageBoxButtons.OK);
                     return;
@@ -166,8 +166,21 @@ namespace QLDSV_TC
                 while (Program.myReader.Read()) //data nhiều dòng thì dùng vòng lặp
                 {
                     Program.username = Program.myReader.GetString(0);//lay user name
-                    Program.mHoTen = Program.myReader.GetString(1);
                     Program.mGroup = Program.myReader.GetString(2);
+                    if (Program.mGroup == "PKT")
+                    {
+                        Program.username = Program.mlogin;
+                        Program.conn.Close();
+                        Program.frmChinh.MANV.Text = "Mã NV: " + Program.username;
+                        Program.frmChinh.HOTEN.Text = "Họ tên: " + Program.username;
+                        Program.frmChinh.NHOM.Text = "Phòng: " + "PKT";
+                        Program.frmChinh.HienThiMenu();
+                        Program.myReader.Close();
+                        this.Close();
+                        return;
+                    }
+                    else
+                        Program.mHoTen = Program.myReader.GetString(1);
 
                 }
 
@@ -178,10 +191,6 @@ namespace QLDSV_TC
                 }
                 Program.myReader.Close();
                 Program.conn.Close();
-                Program.frmChinh.MANV.Text = "Mã SV: " + Program.username;
-                Program.frmChinh.HOTEN.Text = "Họ tên: " + Program.mHoTen;
-                Program.frmChinh.NHOM.Text = "Lớp: " + Program.mGroup;
-
                 Program.frmChinh.HienThiMenu();
                 this.Close();
             }

@@ -129,7 +129,7 @@ namespace QLDSV_TC
         private void btnThemHocPhi_Click(object sender, EventArgs e)
         {
 
-            string strlenh = " exec [dbo].[SP_ThemHocPHi] " + strCurrentMSV + "," + txtNienKhoa.Text + "," + txtHocKy.Text + "," + txthocPhi.Text;
+            string strlenh = " exec [dbo].[SP_ThemHocPHi] '" + strCurrentMSV + "','" + txtNienKhoa.Text + "'," + txtHocKy.Text + "," + txthocPhi.Text;
             if (Program.ExecSqlNonQuery(strlenh) == 0)
                 MessageBox.Show("Nhập học phí thành công", "", MessageBoxButtons.OK);
         }
