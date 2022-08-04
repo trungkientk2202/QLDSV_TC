@@ -73,7 +73,7 @@ namespace QLDSV_TC
             catch (SqlException e)
             {
                 Program.conn.Close();
-                return null;
+                throw e;
             }
         }
         //view trả về dạng bảng

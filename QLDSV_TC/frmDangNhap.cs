@@ -61,6 +61,8 @@ namespace QLDSV_TC
             if (KetNoi_CSDLGOC() == 0) return;
             LayDSPM("Select * FROM  [dbo].[Get_Subscribes]");
             cmbKhoa.SelectedIndex = 0;
+            if (cmbKhoa.SelectedValue.ToString() == "System.Data.DataRowView") return;
+            Program.servername = cmbKhoa.SelectedValue.ToString();
         }
 
 
@@ -72,6 +74,7 @@ namespace QLDSV_TC
                 MessageBox.Show("Login name và mật khẩu không được để trống", "", MessageBoxButtons.OK);
                 return;
             }
+            Program.mKhoa = cmbKhoa.SelectedIndex;
             Program.mlogin = txtLogin.Text;
             Program.password = txtPass.Text;
             if (Program.KetNoi() == 0)//Kết nối lần 1 bằng user giảng viên thất bại
@@ -86,21 +89,22 @@ namespace QLDSV_TC
                 string maSv = txtLogin.Text;
                 string password = txtPass.Text;
                 string strlenh = "EXEC [dbo].[SP_LOGIN] '" + maSv + "'," + "'" + password + "'";
-                Program.myReader = Program.ExecSqlDataReader(strlenh);
-                if (Program.myReader == null)
-                {
-                    Program.username = Program.mlogin;
-                    Program.mGroup = "PKT";
-                    Program.conn.Close();
-                    Program.frmChinh.MANV.Text = "Mã NV: " + Program.username;
-                    Program.frmChinh.HOTEN.Text = "Họ tên: " + Program.username;
-                    Program.frmChinh.NHOM.Text = "Phòng: " + "PKT";
-                    Program.frmChinh.HienThiMenu();
-                    this.Close();
-                    return;
-                }
 
-                if (Program.myReader.FieldCount == 0)
+                Program.myReader = Program.ExecSqlDataReader(strlenh);
+                //if (Program.myReader == null)
+                //{
+                //    Program.username = Program.mlogin;
+                //    Program.mGroup = "PKT";
+                //    Program.conn.Close();
+                //    Program.frmChinh.MANV.Text = "Mã NV: " + Program.username;
+                //    Program.frmChinh.HOTEN.Text = "Họ tên: " + Program.username;
+                //    Program.frmChinh.NHOM.Text = "Phòng: " + "PKT";
+                //    Program.frmChinh.HienThiMenu();
+                //    this.Close();
+                //    return;
+                //}
+
+                if (!Program.myReader.HasRows)
                 {
                     MessageBox.Show("Lỗi đăng nhập", "", MessageBoxButtons.OK);
                     return;
@@ -135,29 +139,33 @@ namespace QLDSV_TC
                 String strlenh;
                 strlenh = "EXEC [dbo].[SP_Lay_Thong_Tin_GV_Tu_Login] '" + Program.mlogin + "'";
                 Program.myReader = Program.ExecSqlDataReader(strlenh);
-                if (Program.myReader == null)
-                {
-                    string maSv = txtLogin.Text;
-                    string password = txtPass.Text;
+                //if (Program.myReader == null)
+                //{
+                //    string maSv = txtLogin.Text;
+                //    string password = txtPass.Text;
 
-                    if (Program.KetNoi() == 0) return;
+                //    if (Program.KetNoi() == 0) {
+                //        MessageBox.Show("Bạn xem lại username và password", "", MessageBoxButtons.OK);
 
-                    strlenh = "EXEC [dbo].[SP_LOGIN] '" + maSv + "'," + "'" + password + "'";
-                    Program.myReader = Program.ExecSqlDataReader(strlenh);
-                    if (Program.myReader == null)
-                    {
-                        Program.username = Program.mlogin;
-                        Program.mGroup = "PKT";
-                        Program.conn.Close();
-                        Program.frmChinh.MANV.Text = "Mã NV: " + Program.username;
-                        Program.frmChinh.HOTEN.Text = "Họ tên: " + Program.username;
-                        Program.frmChinh.NHOM.Text = "Phòng: " + "PKT";
-                        Program.frmChinh.HienThiMenu();
-                        this.Close();
-                        return;
-                    }
+                //        return;
+                //    }
 
-                };
+                //    strlenh = "EXEC [dbo].[SP_LOGIN] '" + maSv + "'," + "'" + password + "'";
+                //    Program.myReader = Program.ExecSqlDataReader(strlenh);
+                //    if (Program.myReader == null)
+                //    {
+                //        Program.username = Program.mlogin;
+                //        Program.mGroup = "PKT";
+                //        Program.conn.Close();
+                //        Program.frmChinh.MANV.Text = "Mã NV: " + Program.username;
+                //        Program.frmChinh.HOTEN.Text = "Họ tên: " + Program.username;
+                //        Program.frmChinh.NHOM.Text = "Phòng: " + "PKT";
+                //        Program.frmChinh.HienThiMenu();
+                //        this.Close();
+                //        return;
+                //    }
+
+                //};
                 if (!Program.myReader.HasRows)
                 {
                     MessageBox.Show("Lỗi đăng nhập", "", MessageBoxButtons.OK);
@@ -209,6 +217,7 @@ namespace QLDSV_TC
         {
             try
             {
+                if (cmbKhoa.SelectedValue.ToString() == "System.Data.DataRowView") return;
                 Program.servername = cmbKhoa.SelectedValue.ToString();
             }
             catch (Exception ex) { }
