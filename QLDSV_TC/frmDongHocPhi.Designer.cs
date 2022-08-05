@@ -71,7 +71,6 @@ namespace QLDSV_TC
             this.sP_DanhSachHocPHiTableAdapter = new QLDSV_TC.QLDSV_TCDataSet3TableAdapters.SP_DanhSachHocPHiTableAdapter();
             this.cT_DONGHOCPHITableAdapter = new QLDSV_TC.QLDSV_TCDataSetGocTableAdapters.CT_DONGHOCPHITableAdapter();
             this.btnThemChiTietHocPhi = new System.Windows.Forms.Button();
-            this.txtChiTietTienHocPhi = new DevExpress.XtraEditors.TextEdit();
             this.txtNienKhoa = new DevExpress.XtraEditors.TextEdit();
             this.btnThemHocPhi = new System.Windows.Forms.Button();
             this.txtHocKy = new DevExpress.XtraEditors.TextEdit();
@@ -83,6 +82,7 @@ namespace QLDSV_TC
             this.lbCurrentSelectedRow = new DevExpress.XtraEditors.LabelControl();
             this.sP_DanhSachHocPHiTableAdapter1 = new QLDSV_TC.QLDSV_TCDataSet4TableAdapters.SP_DanhSachHocPHiTableAdapter();
             this.btnTaoTaiKhoan = new System.Windows.Forms.Button();
+            this.txtChiTietTienHocPhi = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.sPLAYDANHSACHHOCKIBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qLDSV_TCDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hOCPHIBindingSource)).BeginInit();
@@ -102,7 +102,6 @@ namespace QLDSV_TC
             ((System.ComponentModel.ISupportInitialize)(this.cTDONGHOCPHIBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qldsV_TCDataSet3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtChiTietTienHocPhi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNienKhoa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHocKy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txthocPhi.Properties)).BeginInit();
@@ -388,18 +387,6 @@ namespace QLDSV_TC
             this.btnThemChiTietHocPhi.UseVisualStyleBackColor = true;
             this.btnThemChiTietHocPhi.Click += new System.EventHandler(this.btnThemChiTietHocPhi_Click);
             // 
-            // txtChiTietTienHocPhi
-            // 
-            this.txtChiTietTienHocPhi.Location = new System.Drawing.Point(285, 313);
-            this.txtChiTietTienHocPhi.Name = "txtChiTietTienHocPhi";
-            this.txtChiTietTienHocPhi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtChiTietTienHocPhi.Properties.Appearance.Options.UseFont = true;
-            this.txtChiTietTienHocPhi.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtChiTietTienHocPhi.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtChiTietTienHocPhi.Size = new System.Drawing.Size(283, 24);
-            this.txtChiTietTienHocPhi.TabIndex = 11;
-            this.txtChiTietTienHocPhi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtChiTietTienHocPhi_KeyPress);
-            // 
             // txtNienKhoa
             // 
             this.txtNienKhoa.Location = new System.Drawing.Point(258, 54);
@@ -502,11 +489,21 @@ namespace QLDSV_TC
             this.btnTaoTaiKhoan.UseVisualStyleBackColor = true;
             this.btnTaoTaiKhoan.Click += new System.EventHandler(this.btnTaoTaiKhoan_Click);
             // 
+            // txtChiTietTienHocPhi
+            // 
+            this.txtChiTietTienHocPhi.Location = new System.Drawing.Point(285, 316);
+            this.txtChiTietTienHocPhi.MaxLength = 9;
+            this.txtChiTietTienHocPhi.Name = "txtChiTietTienHocPhi";
+            this.txtChiTietTienHocPhi.Size = new System.Drawing.Size(293, 20);
+            this.txtChiTietTienHocPhi.TabIndex = 24;
+            this.txtChiTietTienHocPhi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtChiTietTienHocPhi_KeyPress);
+            // 
             // frmDongHocPhi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1216, 644);
+            this.Controls.Add(this.txtChiTietTienHocPhi);
             this.Controls.Add(this.btnTaoTaiKhoan);
             this.Controls.Add(this.lbCurrentSelectedRow);
             this.Controls.Add(this.label7);
@@ -517,7 +514,6 @@ namespace QLDSV_TC
             this.Controls.Add(this.txtHocKy);
             this.Controls.Add(this.txtNienKhoa);
             this.Controls.Add(this.btnThemHocPhi);
-            this.Controls.Add(this.txtChiTietTienHocPhi);
             this.Controls.Add(this.btnThemChiTietHocPhi);
             this.Controls.Add(this.gridChiTietHocPhi);
             this.Controls.Add(this.gridHocPhi);
@@ -548,7 +544,6 @@ namespace QLDSV_TC
             ((System.ComponentModel.ISupportInitialize)(this.cTDONGHOCPHIBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.qldsV_TCDataSet3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtChiTietTienHocPhi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNienKhoa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHocKy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txthocPhi.Properties)).EndInit();
@@ -591,7 +586,6 @@ namespace QLDSV_TC
         private DevExpress.XtraGrid.Columns.GridColumn colNGAYDONG;
         private DevExpress.XtraGrid.Columns.GridColumn colSOTIENDONG;
         private System.Windows.Forms.Button btnThemChiTietHocPhi;
-        private DevExpress.XtraEditors.TextEdit txtChiTietTienHocPhi;
         private DevExpress.XtraEditors.TextEdit txtNienKhoa;
         private System.Windows.Forms.Button btnThemHocPhi;
         private DevExpress.XtraEditors.TextEdit txtHocKy;
@@ -611,5 +605,6 @@ namespace QLDSV_TC
         private DevExpress.XtraGrid.Columns.GridColumn colCONLAI;
         private QLDSV_TCDataSet4TableAdapters.SP_DanhSachHocPHiTableAdapter sP_DanhSachHocPHiTableAdapter1;
         private System.Windows.Forms.Button btnTaoTaiKhoan;
+        private System.Windows.Forms.TextBox txtChiTietTienHocPhi;
     }
 }

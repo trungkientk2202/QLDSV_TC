@@ -73,7 +73,9 @@ namespace QLDSV_TC
         {
             try
             {
-                strCurrentMSV = txtMSV.Text.Trim();
+                if(sender != null && e != null)
+                    strCurrentMSV = txtMSV.Text.Trim();
+
                 this.sP_DanhSachHocPHiTableAdapter1.Connection.ConnectionString = Program.connstr;
                 this.sP_DanhSachHocPHiTableAdapter1.Fill(this.qLDSV_TCDataSet4.SP_DanhSachHocPHi, strCurrentMSV);
                 int intRowCount = ((GridView)gridHocPhi.MainView).RowCount;
@@ -128,10 +130,16 @@ namespace QLDSV_TC
 
         private void btnThemHocPhi_Click(object sender, EventArgs e)
         {
+            if(string.IsNullOrEmpty(strCurrentMSV )|| string.IsNullOrEmpty(txtMSV.Text.Trim()))
+            {
+                MessageBox.Show("Vui lòng nhập mã sinh viên", "", MessageBoxButtons.OK);
+                return;
+            }
 
             string strlenh = " exec [dbo].[SP_ThemHocPHi] '" + strCurrentMSV + "','" + txtNienKhoa.Text + "'," + txtHocKy.Text + "," + txthocPhi.Text;
             if (Program.ExecSqlNonQuery(strlenh) == 0)
                 MessageBox.Show("Nhập học phí thành công", "", MessageBoxButtons.OK);
+            button1_Click(null, null);
         }
 
         private void btnThemChiTietHocPhi_Click(object sender, EventArgs e)
@@ -199,25 +207,19 @@ namespace QLDSV_TC
 
         private void txtChiTietTienHocPhi_KeyPress(object sender, KeyPressEventArgs e)
         {
-
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-                (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && txtChiTietTienHocPhi.Text.Length < 9; ;
         }
 
         private void txtHocKy_KeyPress(object sender, KeyPressEventArgs e)
         {
 
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && txtHocKy.Text.Length < 9;
         }
 
         private void txthocPhi_KeyPress(object sender, KeyPressEventArgs e)
         {
 
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && txthocPhi.Text.Length < 9;
 
         }
 
@@ -226,5 +228,7 @@ namespace QLDSV_TC
             frmTaoLoginPKT frmTaoLoginPKT = new frmTaoLoginPKT();
             frmTaoLoginPKT.ShowDialog(this);
         }
+
+        
     }
 }
