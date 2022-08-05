@@ -71,7 +71,7 @@ namespace QLDSV_TC
                 NHOM.Text = "Lớp: " + Program.mGroup;
                 btnDangKy.Enabled = false;
                 QuanLy.Visible = MoLTC.Enabled=NhapDiem.Enabled= BaoCao.Visible = false;
-                TuyChon.Visible= DangKyLTC.Enabled = DongHocPhi.Enabled= true;
+                TuyChon.Visible = DangKyLTC.Enabled = true;//= DongHocPhi.Enabled= true;
                 return;
             }
             
@@ -79,7 +79,7 @@ namespace QLDSV_TC
             HOTEN.Text = "Họ tên: " + Program.mHoTen;
             NHOM.Text = "Nhóm: " + Program.mGroup;
             btnDangKy.Enabled=QuanLy.Visible =TuyChon.Visible= NhapDiem.Enabled = BaoCao.Visible = true;
-            DangKyLTC.Enabled = DongHocPhi.Enabled = false;
+            DangKyLTC.Enabled = false;// DongHocPhi.Enabled = false;
             //Phân quyền
         }
 
