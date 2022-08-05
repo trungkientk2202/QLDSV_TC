@@ -112,7 +112,7 @@ namespace QLDSV_TC
         private void btnDangXuat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             QuanLy.Visible = TuyChon.Visible =  false;
-            BaoCao.Visible = true;
+            BaoCao.Visible = false;
             btnDangXuat.Enabled = false;
             btnDangNhap.Enabled = true;
             MANV.Text = "";
